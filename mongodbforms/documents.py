@@ -354,7 +354,7 @@ class BaseDocumentForm(BaseForm):
 
     def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None,
                  initial=None, error_class=ErrorList, label_suffix=':',
-                 empty_permitted=False, instance=None):
+                 empty_permitted=False, use_required_attribute=False, instance=None):
 
         opts = self._meta
 
@@ -376,9 +376,16 @@ class BaseDocumentForm(BaseForm):
         # It is False by default so overriding self.clean() and failing to call
         # super will stop validate_unique from being called.
         self._validate_unique = False
-        super(BaseDocumentForm, self).__init__(data, files, auto_id, prefix,
-                                               object_data, error_class,
-                                               label_suffix, empty_permitted)
+        super(BaseDocumentForm, self).__init__(
+            data=data,
+            files=files,
+            auto_id=auto_id,
+            prefix=prefix,
+            initial=object_data,
+            error_class=error_class,
+            label_suffix=label_suffix,
+            empty_permitted=empty_permitted,
+            use_required_attribute=use_required_attribute)
 
     def _update_errors(self, message_dict):
         for k, v in list(message_dict.items()):
