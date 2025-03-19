@@ -1,6 +1,7 @@
 import os
 import itertools
-from collections import Callable, OrderedDict
+from collections.abc import Callable
+from collections import OrderedDict
 from functools import reduce
 
 from django.forms.forms import (BaseForm, DeclarativeFieldsMetaclass,

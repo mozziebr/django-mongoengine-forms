@@ -8,10 +8,11 @@ from setuptools import setup
 
 requirements = ['setuptools', 'mongoengine>=0.10.0']
 
-if sys.version_info >= (3, 5):
-    requirements.append('django')
-else:
-    requirements.append('django<2')
+# if sys.version_info >= (3, 5):
+#     requirements.append('django')
+# else:
+#     requirements.append('django<2')
+requirements.append('Django>=1.9.8')
 
 
 def convert_readme():
